@@ -1,6 +1,6 @@
 # Project 7 - WordPress Pentesting
 
-Time spent: **X** hours spent in total
+Time spent: **8** hours spent in total
 
 > Objective: Find, analyze, recreate, and document **five vulnerabilities** affecting an old version of WordPress
 
@@ -31,15 +31,19 @@ Time spent: **X** hours spent in total
   - [ ] Affected source code: Code handling HTML tags and shortcode filtering
     - [Link 1](https://github.com/WordPress/WordPress/commit/f72b21af23da6b6d54208e5c1d65ececdaa109c8)
 
-1. (Required) Vulnerability Name or ID
-  - [ ] Summary: 
-    - Vulnerability types:
-    - Tested in version:
-    - Fixed in version: 
-  - [ ] GIF Walkthrough: 
-  - [ ] Steps to recreate: 
-  - [ ] Affected source code:
-    - [Link 1](https://core.trac.wordpress.org/browser/tags/version/src/source_file.php)
+1. (Required) Authenticated Stored Cross-Site Scripting (XSS) in YouTube URL Embeds
+  - [ ] Summary: YouTube links are autoembedded by WordPress and do not sanitize the url following the domain. This allows us to enter scripts as the url and execute them on the page they are located in.
+    - Vulnerability types: XSS
+    - Tested in version: 4.2
+    - Fixed in version: 4.2.13
+  - [ ] GIF Walkthrough: ![](Exploit3.gif)
+  - [ ] Steps to recreate: Create a post containing the following code:
+  ```
+  https://youtube.com/watch?v=dQw4w9WgXcQ<svg onload=alert('XSS')>
+  ```
+  Note that any YouTube link will do and that the link does not even have to be from a valid source.
+  - [ ] Affected source code: Code handling youtube link embedding
+    - [Link 1](https://github.com/WordPress/WordPress/commit/419c8d97ce8df7d5004ee0b566bc5e095f0a6ca8)
 
 ## Assets
 
@@ -53,16 +57,18 @@ List any additional assets, such as scripts or files
 - [Exploit 1 Reference](https://klikki.fi/adv/wordpress2.html)
 - [Exploit 2 Information](https://wpvulndb.com/vulnerabilities/8186)
 - [Exploit 2 Reference](https://blog.checkpoint.com/2015/09/15/finding-vulnerabilities-in-core-wordpress-a-bug-hunters-trilogy-part-iii-ultimatum/)
+- [Exploit 3 Information](https://wpvulndb.com/vulnerabilities/8768)
+- [Exploit 3 Reference](https://blog.sucuri.net/2017/03/stored-xss-in-wordpress-core.html)
 
 GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while doing the work
+There were a lot of cool vulnerabilities available to be abused but my lack of skill and knowledge made a lot of them out of reach for me. One wad [Stored Cross-Site Scripting (XSS) via Theme Name fallback](https://wpvulndb.com/vulnerabilities/8718) which was very interestign and pertained to a type of vulnerability we learned about in class. It presented a lto of challenged and required me to modify my .htaccess to increase my upload_max_filesize so that I could upload the theme to execute the XSS. Ultimately I could not get WPDistillery to change over to my corrupted XSS theme and I suspect it is because my VM is not hosted in a Linux environment.nOther vulnerabilites showed the faulty lines of code but interpreting an attack from them required knowledge beyond me or scripts that directly interfaced with the WPDistillery page.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2020 Kevin Thomas
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
