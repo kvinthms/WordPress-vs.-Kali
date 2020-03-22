@@ -20,7 +20,7 @@ Time spent: **8** hours spent in total
   - [ ] Affected source code: N/A - MYSQL Limitation
 
 1. (Required) Authenticated Shortcode Tags Cross-Site Scripting (XSS)
-  - [ ] Summary: Allows storing XSS in clickable links by bypassing WordPress HTML tag filters. This is accomplished by abusing the seperate handling of shortcode and HTML validation. This penetration can be done by anyone with the ability to create posts which is exacerbated by the fact that 4.2 contains a core WordPress vulnerability allowing unautherized users to create posts.
+  - [ ] Summary: Allows storing XSS in clickable links by bypassing WordPress HTML tag filters. This is accomplished by abusing the separate handling of shortcode and HTML validation. This penetration can be done by anyone with the ability to create posts which is exacerbated by the fact that 4.2 contains a core WordPress vulnerability allowing unauthorized users to create posts.
     - Vulnerability types: XSS
     - Tested in version: 4.2
     - Fixed in version: 4.2.5
@@ -43,7 +43,7 @@ Time spent: **8** hours spent in total
   https://youtube.com/watch?v=dQw4w9WgXcQ<svg onload=alert('XSS')>
   ```
   Note that any YouTube link will do and that the link does not even have to be from a valid source.
-  - [ ] Affected source code: Code handling youtube link embedding
+  - [ ] Affected source code: Code handling YouTube link embedding
     - [Link 1](https://github.com/WordPress/WordPress/commit/419c8d97ce8df7d5004ee0b566bc5e095f0a6ca8)
 
 ## Assets
@@ -65,7 +65,7 @@ GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-There were a lot of cool vulnerabilities available to be abused but my lack of skill and knowledge made a lot of them out of reach for me. One wad [Stored Cross-Site Scripting (XSS) via Theme Name fallback](https://wpvulndb.com/vulnerabilities/8718) which was very interestign and pertained to a type of vulnerability we learned about in class. It presented a lto of challenged and required me to modify my .htaccess to increase my upload_max_filesize so that I could upload the theme to execute the XSS. Ultimately I could not get WPDistillery to change over to my corrupted XSS theme and I suspect it is because my VM is not hosted in a Linux environment. Other vulnerabilites showed the faulty lines of code but interpreting an attack from them required knowledge beyond me or scripts that I did not have the ability to write in order to attack the WordPress page.
+There were a lot of cool vulnerabilities available to be abused but my lack of skill and knowledge made a lot of them out of reach for me. One was [Stored Cross-Site Scripting (XSS) via Theme Name fallback](https://wpvulndb.com/vulnerabilities/8718) which was very interesting and pertained to a type of vulnerability we learned about in class. It presented a lot of challenged and required me to modify my .htaccess to increase my upload_max_filesize so that I could upload the theme to execute the XSS. Ultimately I could not get WPDistillery to change over to my corrupted XSS theme and I suspect it is because my VM is not hosted in a Linux environment. Other vulnerabilities showed the faulty lines of code but interpreting an attack from them required knowledge beyond me or scripts that I did not have the ability to write in order to attack the WordPress page.
 
 ## License
 
