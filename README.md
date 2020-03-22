@@ -6,15 +6,17 @@ Time spent: **X** hours spent in total
 
 ## Pentesting Report
 
-1. (Required) Vulnerability Name or ID
-  - [ ] Summary: 
-    - Vulnerability types:
-    - Tested in version:
-    - Fixed in version: 
-  - [ ] GIF Walkthrough: 
-  - [ ] Steps to recreate: 
-  - [ ] Affected source code:
-    - [Link 1](https://core.trac.wordpress.org/browser/tags/version/src/source_file.php)
+1. (Required) Unauthenticated Stored Cross-Site Scripting (XSS)
+  - [ ] Summary: Allows XSS through comments that are larger thab 64kb in size. MYSQL TEXT type only allows 64kb of data so overloaded this truncates text and creates malformed HTML on the page.
+    - Vulnerability types: XSS
+    - Tested in version: 4.2
+    - Fixed in version: 4.2.1
+  - [ ] GIF Walkthrough: ![](Exploit1.gif)
+  - [ ] Steps to recreate: Create a comment with an alert that also contains comment text >64kb in size.
+        ```
+        <a title='x onmouseover=alert(unescape(/hello%20world/.source)) style=position:absolute;left:0;top:0;width:5000px;height:5000px  AAAAAAAAAAAA...[64 kb]..AAA'></a>
+        ```
+  - [ ] Affected source code: N/A - MYSQL Limitation
 1. (Required) Vulnerability Name or ID
   - [ ] Summary: 
     - Vulnerability types:
@@ -42,6 +44,8 @@ List any additional assets, such as scripts or files
 
 - [WordPress Source Browser](https://core.trac.wordpress.org/browser/)
 - [WordPress Developer Reference](https://developer.wordpress.org/reference/)
+- [Exploit 1 Information](https://wpvulndb.com/vulnerabilities/7945)
+- [Exploit 1 Reference](https://klikki.fi/adv/wordpress2.html)
 
 GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
