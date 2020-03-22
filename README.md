@@ -51,6 +51,8 @@ List any additional assets, such as scripts or files
 - [WordPress Developer Reference](https://developer.wordpress.org/reference/)
 - [Exploit 1 Information](https://wpvulndb.com/vulnerabilities/7945)
 - [Exploit 1 Reference](https://klikki.fi/adv/wordpress2.html)
+- [Exploit 2 Information](https://wpvulndb.com/vulnerabilities/8186)
+- [Exploit 2 Reference](https://blog.checkpoint.com/2015/09/15/finding-vulnerabilities-in-core-wordpress-a-bug-hunters-trilogy-part-iii-ultimatum/)
 
 GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
