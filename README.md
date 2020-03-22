@@ -7,15 +7,16 @@ Time spent: **8** hours spent in total
 ## Pentesting Report
 
 1. (Required) Unauthenticated Stored Cross-Site Scripting (XSS)
-  - [ ] Summary: Allows XSS through comments that are larger thab 64kb in size. MYSQL TEXT type only allows 64kb of data so overloaded this truncates text and creates malformed HTML on the page.
+  - [ ] Summary: Comments allow XSS through text that is larger than 64kb in size. The MYSQL TEXT type only allows 64kb of data so overloading this truncates the text and creates malformed HTML on the page, allowing XSS.
     - Vulnerability types: XSS
     - Tested in version: 4.2
     - Fixed in version: 4.2.1
   - [ ] GIF Walkthrough: ![](Exploit1.gif)
   - [ ] Steps to recreate: Create a comment with an alert that also contains comment text >64kb in size.
-        ```
+        ```html
         <a title='x onmouseover=alert(unescape(/hello%20world/.source)) style=position:absolute;left:0;top:0;width:5000px;height:5000px  AAAAAAAAAAAA...[64 kb]..AAA'></a>
         ```
+        Use either a script to write out a comment of this size or simply Copy & Paste some text over and over until of adequate size.
   - [ ] Affected source code: N/A - MYSQL Limitation
 
 1. (Required) Authenticated Shortcode Tags Cross-Site Scripting (XSS)
@@ -25,7 +26,7 @@ Time spent: **8** hours spent in total
     - Fixed in version: 4.2.5
   - [ ] GIF Walkthrough: ![](Exploit2.gif)
   - [ ] Steps to recreate: Create a post that contains the following code:
-  ```
+  ```html
   TEST!!![caption width="1" caption='<a href="' ">]</a><a href="http://onMouseOver='alert(1)'">Click me</a>
   ```
   - [ ] Affected source code: Code handling HTML tags and shortcode filtering
@@ -38,7 +39,7 @@ Time spent: **8** hours spent in total
     - Fixed in version: 4.2.13
   - [ ] GIF Walkthrough: ![](Exploit3.gif)
   - [ ] Steps to recreate: Create a post containing the following code:
-  ```
+  ```html
   https://youtube.com/watch?v=dQw4w9WgXcQ<svg onload=alert('XSS')>
   ```
   Note that any YouTube link will do and that the link does not even have to be from a valid source.
@@ -47,7 +48,7 @@ Time spent: **8** hours spent in total
 
 ## Assets
 
-List any additional assets, such as scripts or files
+N/A
 
 ## Resources
 
